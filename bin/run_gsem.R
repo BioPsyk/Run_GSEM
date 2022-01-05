@@ -5,7 +5,7 @@ require(dplyr)
 require(data.table)
 
 args           = commandArgs(trailingOnly = TRUE)
-sum_stats      = read.table(args[1])
+sum_stats      = read.table(args[1], header = T)
 hm3_snps_path  = args[2]
 ld_folder      = args[3]
 reference      = args[4]
@@ -28,7 +28,6 @@ munge(files = sum_stats$FILE_PATH,
       N = sum_stats$N_EFF, 
       info.filter = info_threshold, 
       maf.filter = maf_threshold)
-
 
 # ----- STEP 2: RUN MULTI-VARIABLE LDSC -----
 
