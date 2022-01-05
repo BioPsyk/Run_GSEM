@@ -31,24 +31,23 @@ munge(files = sum_stats$FILE_PATH,
 
 # ----- STEP 2: RUN MULTI-VARIABLE LDSC -----
 
-sum_stats       = sum_stats %>% 
-    mutate(MUNGED_FILE = paste0(TRAIT, ".sumstats.gz"))
-LDSCoutput      = ldsc(traits = sum_stats$MUNGED_FILE, 
-                       sample.prev = sum_stats$SAMPLE_PREV, 
-                       population.prev = sum_stats$POP_PREV, 
-                       ld = ld_folder, 
-                       wld = ld_folder, 
-                       trait.names = sum_stats$TRAIT,
-                       ldsc.log = paste0(out_prefix, ".log"),
-                       stand = TRUE)
+sum_stats = sum_stats %>% mutate(MUNGED_FILE = paste0(TRAIT, ".sumstats.gz"))
+LDSCoutput = ldsc(traits = sum_stats$MUNGED_FILE,
+                  sample.prev = sum_stats$SAMPLE_PREV,
+                  population.prev = sum_stats$POP_PREV,
+                  ld = ld_folder,
+                  wld = ld_folder,
+                  trait.names = sum_stats$TRAIT,
+                  ldsc.log = paste0(out_prefix, ".log"),
+                  stand = TRUE)
 
 # ----- STEP 3: PREPARE SUMMARY STATS FOR GWAS -----
 
-for ( i in 1:length(sum_stats)) {
-    file = fread(sum_stats$FILE_PATH[i])
+for (i in 1:length(sum_stats)) {
+    file = fread(sum_stats$FILE_PATH[i], data.table = FALSE, header = T)
     file_chr = file %>% filter(CHR == chromosome)
     write.table(file_chr, 
-                paste0(sum_stats$TRAIT, "_CHR", chromosome, ".split.assoc"),
+                paste0(sum_stats$TRAIT[i], "_CHR", chromosome, ".split.assoc"),
                 row.names = F,
                 quote = F,
                 sep = " ")
