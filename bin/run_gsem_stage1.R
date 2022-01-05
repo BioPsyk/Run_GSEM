@@ -37,7 +37,7 @@ LDSCoutput = ldsc(traits = sum_stats$MUNGED_FILE,
                   ld = ld_folder,
                   wld = ld_folder,
                   trait.names = sum_stats$TRAIT,
-                  ldsc.log = paste0(out_prefix, ".log"),
+                  ldsc.log = out_prefix,
                   stand = TRUE)
 
 saveRDS(LDSCoutput, paste0(out_prefix, "_LDSC.rds"))
