@@ -3,7 +3,6 @@
 require(GenomicSEM)
 require(dplyr)
 require(data.table)
-require(qqman)
 
 args           = commandArgs(trailingOnly = TRUE)
 sum_stats      = read.table(args[1])
