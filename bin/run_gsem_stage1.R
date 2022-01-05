@@ -12,7 +12,6 @@ reference      = args[4]
 info_threshold = args[5]
 maf_threshold  = args[6]
 out_prefix     = args[7]
-chromosome     = args[8]
 
 colnames(sum_stats) = c("TRAIT", 
                         "FILE_PATH", 
@@ -41,39 +40,18 @@ LDSCoutput = ldsc(traits = sum_stats$MUNGED_FILE,
                   ldsc.log = paste0(out_prefix, ".log"),
                   stand = TRUE)
 
-# ----- STEP 3: PREPARE SUMMARY STATS FOR GWAS -----
+saveRDS(LDSCoutput, paste0(out_prefix, "_LDSC.rds"))
 
-for (i in 1:length(sum_stats)) {
+# ----- STEP 3: SPLIT SUMMARY STATS FOR GWAS -----
+
+for (i in 1:nrow(sum_stats)) {
     file = fread(sum_stats$FILE_PATH[i], data.table = FALSE, header = T)
-    file_chr = file %>% filter(CHR == chromosome)
-    write.table(file_chr, 
-                paste0(sum_stats$TRAIT[i], "_CHR", chromosome, ".split.assoc"),
-                row.names = F,
-                quote = F,
-                sep = " ")
+    for (chromosome in c(1:22)) {
+        file_chr = file %>% filter(CHR == chromosome)
+        write.table(file_chr,
+                    paste0(sum_stats$TRAIT[i], "_CHR", chromosome, ".split.assoc"),
+                    row.names = F,
+                    quote = F,
+                    sep = " ")
+    }
 }
-
-sum_stats = sum_stats %>% 
-    mutate(CHR_FILE = paste0(TRAIT, "_CHR", chromosome, ".split.assoc"))
-
-p_sumstats <-sumstats(files = sum_stats$CHR_FILE,
-                      ref = reference,
-                      trait.names = sum_stats$TRAIT,
-                      se.logit = rep(T, length(sum_stats)),
-                      OLS = NULL,
-                      linprob = NULL,
-                      N = sum_stats$N_EFF,
-                      betas = NULL,
-                      info.filter = info_threshold,
-                      maf.filter = maf_threshold,
-                      keep.indel = FALSE,
-                      parallel = FALSE,
-                      cores=NULL)
-
-# ----- STEP 4: RUN COMMON FACTOR GWAS, WRITE OUTPUT -----
-
-pfactor = commonfactorGWAS(covstruc = LDSCoutput, SNPs = p_sumstats)
-
-write.table(pfactor, 
-            paste0(out_prefix, "_", "COMMON_FACTOR_GWAS_CHR", chromosome, ".txt"), 
-            row.names = F, sep = " ", quote = F)
