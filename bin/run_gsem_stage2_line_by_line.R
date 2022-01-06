@@ -50,6 +50,7 @@ write.table(pfactor,
                    chromosome, 
                    ".txt"), 
             row.names = FALSE, 
+            col.names = TRUE,
             sep = " ", 
             quote = FALSE,
             append = FALSE)
