@@ -44,7 +44,7 @@ saveRDS(LDSCoutput, paste0(out_prefix, "_LDSC.rds"))
 
 # ----- STEP 3: SPLIT SUMMARY STATS FOR GWAS -----
 
-for (chromosome in c(1..22)) {
+for (chromosome in c(1:22)) {
   dir_name = paste0(out_prefix, "_", chromosome)
   dir.create(dir_name, showWarnings = TRUE)
   for (i in 1:nrow(sum_stats)) {
