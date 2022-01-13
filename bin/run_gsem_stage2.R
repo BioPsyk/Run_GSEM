@@ -22,7 +22,7 @@ LDSCoutput = readRDS(ldsc_out)
 # ----- STEP 4: PREPARE SUMMARY STATS FOR GWAS -----
 
 sum_stats = sum_stats %>% 
-    mutate(CHR_FILE = paste0(TRAIT, "_CHR", chromosome, ".split.assoc"))
+    mutate(CHR_FILE = paste0(TRAIT, "_chr", chromosome, ".split.assoc"))
 
 p_sumstats = sumstats(files = sum_stats$CHR_FILE,
                       ref = reference,
@@ -45,7 +45,7 @@ pfactor = commonfactorGWAS(covstruc = LDSCoutput,
                            smooth_check = TRUE)
 
 write.table(pfactor, 
-            paste0(out_prefix, "_", "COMMON_FACTOR_GWAS_CHR", chromosome, ".txt"), 
+            paste0(out_prefix, "_", "COMMON_FACTOR_GWAS_chr", chromosome, ".txt"), 
             row.names = F, 
             sep = " ", 
             quote = F)

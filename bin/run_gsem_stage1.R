@@ -50,7 +50,14 @@ for (i in 1:nrow(sum_stats)) {
     for (chromosome in c(1:22)) {
         file_chr = file %>% filter(CHR == chromosome)
         write.table(file_chr,
-                    paste0(i, "/", sum_stats$TRAIT[i], "_CHR", chromosome, ".split.assoc"),
+                    paste0(out_prefix,
+                           "_",
+                           i,
+                           "/", 
+                           sum_stats$TRAIT[i], 
+                           "_chr", 
+                           chromosome, 
+                           ".split.assoc"),
                     row.names = F,
                     quote = F,
                     sep = " ")
