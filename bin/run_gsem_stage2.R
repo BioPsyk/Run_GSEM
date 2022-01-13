@@ -40,7 +40,9 @@ p_sumstats = sumstats(files = sum_stats$CHR_FILE,
 
 # ----- STEP 5: RUN COMMON FACTOR GWAS, WRITE OUTPUT -----
 
-pfactor = commonfactorGWAS(covstruc = LDSCoutput, SNPs = p_sumstats)
+pfactor = commonfactorGWAS(covstruc = LDSCoutput, 
+                           SNPs = p_sumstats,
+                           smooth_check = TRUE)
 
 write.table(pfactor, 
             paste0(out_prefix, "_", "COMMON_FACTOR_GWAS_CHR", chromosome, ".txt"), 
