@@ -45,21 +45,20 @@ saveRDS(LDSCoutput, paste0(out_prefix, "_LDSC.rds"))
 # ----- STEP 3: SPLIT SUMMARY STATS FOR GWAS -----
 
 for (i in 1:nrow(sum_stats)) {
-    dir.create(i, showWarnings = TRUE)
-    file = fread(sum_stats$FILE_PATH[i], data.table = FALSE, header = T)
-    for (chromosome in c(1:22)) {
-        file_chr = file %>% filter(CHR == chromosome)
-        write.table(file_chr,
-                    paste0(out_prefix,
-                           "_",
-                           i,
-                           "/", 
-                           sum_stats$TRAIT[i], 
-                           "_chr", 
-                           chromosome, 
-                           ".split.assoc"),
-                    row.names = F,
-                    quote = F,
-                    sep = " ")
+  dir_name = paste0(out_prefix, "_", i)
+  dir.create(dir_name, showWarnings = TRUE)
+  file = fread(sum_stats$FILE_PATH[i], data.table = FALSE, header = T)
+  for (chromosome in c(1:22)) {
+    file_chr = file %>% filter(CHR == chromosome)
+    write.table(file_chr, 
+                paste0(dir_name,
+                       "/",
+                       sum_stats$TRAIT[i],
+                       "_chr",
+                       chromosome,
+                       ".split.assoc"),
+                row.names = F,
+                quote = F,
+                sep = " ")
     }
 }
