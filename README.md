@@ -50,8 +50,8 @@ Read more about GenomicSEM common factor GWAS [here](https://github.com/GenomicS
 
 #### Remaining files, including HapMap3 SNP lists, 1000 genomes reference etc can be downloaded from the author's page [here](https://utexas.box.com/s/vkd36n197m8klbaio3yzoxsee6sxo11v)
 
-## NOTE 1: Before running the GWAS in stage 2, it is be a good idea to interactively fit the model without SNP effects as shown [here,](https://github.com/GenomicSEM/GenomicSEM/wiki/3.-Models-without-Individual-SNP-effects)to make sure it fits the data
+### NOTE 1: Before running the GWAS in stage 2, it is a good idea to interactively fit the model without SNP effects as shown [here,](https://github.com/GenomicSEM/GenomicSEM/wiki/3.-Models-without-Individual-SNP-effects)to make sure it fits the data
 
-## NOTE 2: Stage 2 requires high memory, I've had success with 180g and a wall time of 4-5 days
+### NOTE 2: Stage 2 requires high memory, I've had success with 180g and a wall time of 4-5 days
 
 Results can be plotted using existing code and libraries for Manhattan and QQ plots
