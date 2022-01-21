@@ -24,7 +24,7 @@ colnames(sum_stats) = c("TRAIT",
 munge(files = sum_stats$FILE_PATH, 
       hm3 = hm3_snps_path,
       trait.names = sum_stats$TRAIT, 
-      N = sum_stats$N_EFF, 
+      N = sum_stats$N, 
       info.filter = info_threshold, 
       maf.filter = maf_threshold)
 
