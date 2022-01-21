@@ -36,7 +36,7 @@ Read more about GenomicSEM common factor GWAS [here](https://github.com/GenomicS
 
     <out_prefix>_COMMON_FACTOR_GWAS_chr<chromosome>.txt: Summary stats from common factor GWAS output for specified chromosome
 
- Output format described [here](url=<https://github.com/GenomicSEM/GenomicSEM/wiki/4.-Common-Factor-GWAS) in detail
+ Output format described [here](https://github.com/GenomicSEM/GenomicSEM/wiki/4.-Common-Factor-GWAS) in detail
 
 ### FILE FORMATS
 
