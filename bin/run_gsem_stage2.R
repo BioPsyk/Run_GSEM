@@ -14,7 +14,7 @@ chromosome     = args[7]
 
 colnames(sum_stats) = c("TRAIT", 
                         "FILE_PATH", 
-                        "N_EFF", 
+                        "N", 
                         "SAMPLE_PREV", 
                         "POP_PREV")
 LDSCoutput = readRDS(ldsc_out)
@@ -30,7 +30,7 @@ p_sumstats = sumstats(files = sum_stats$CHR_FILE,
                       se.logit = rep(T, nrow(sum_stats)),
                       OLS = NULL,
                       linprob = NULL,
-                      N = sum_stats$N_EFF,
+                      N = sum_stats$N,
                       betas = NULL,
                       info.filter = info_threshold,
                       maf.filter = maf_threshold,

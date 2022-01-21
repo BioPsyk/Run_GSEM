@@ -44,7 +44,7 @@ Read more about GenomicSEM common factor GWAS [here](https://github.com/GenomicS
 
     TRAIT : Name of the trait
     FILE_PATH  : Path to corresponding sumstats file
-    N_EFF : 4 * SAMPLE_PREV * (1 - SAMPLE_PREV) * N
+    N : Sample size
     SAMPLE_PREV : N_CASES / N
     POPULATION_PREV : Population based prevalence of the trait
 

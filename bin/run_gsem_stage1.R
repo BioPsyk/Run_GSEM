@@ -15,7 +15,7 @@ out_prefix     = args[7]
 
 colnames(sum_stats) = c("TRAIT", 
                         "FILE_PATH", 
-                        "N_EFF", 
+                        "N", 
                         "SAMPLE_PREV", 
                         "POP_PREV")
 
