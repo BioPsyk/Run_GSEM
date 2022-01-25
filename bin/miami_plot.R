@@ -11,13 +11,13 @@ args       = commandArgs(trailingOnly = TRUE)
 assoc      = fread(args[1], header = TRUE)
 assoc      = assoc %>% 
     filter(fail == 0) %>% 
-    select(CHR, BP, Pval_Estimate, Q_pval)
+    select(CHR, SNP, BP, Pval_Estimate, Q_pval)
 out_prefix = args[2]
 assoc_P    = assoc %>% 
-    select(CHR, BP, Pval_Estimate) %>%
+    select(CHR, SNP, BP, Pval_Estimate) %>%
     rename(P = Pval_Estimate)
 assoc_Q    = assoc %>% 
-    select(CHR, BP, Q_pval) %>%
+    select(CHR, SNP, BP, Q_pval) %>%
     rename(P = Q_pval)
 
 # --------------------------- MIAMI PLOT ---------------------------#
