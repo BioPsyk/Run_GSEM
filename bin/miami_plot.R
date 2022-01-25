@@ -35,6 +35,6 @@ ggplot(assoc, aes(x = BP, y = -1 * log10(P), color = Highlight)) +
     ylab("-log10(P)") + 
     geom_hline(yintercept = -1 * log10(5e-8), lty = 2, color = "blue") +
     geom_hline(yintercept = -1 * log10(1e-6), lty = 2, color = "green") + 
-    scale_color_manual(values = c("black", "red")) +
+    scale_color_manual(values = c("black", "red"))
     
 dev.off()
