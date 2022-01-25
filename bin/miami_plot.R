@@ -26,7 +26,7 @@ assoc      = rbind(assoc_P, assoc_Q)
 png(paste0(out_prefix, "_MiamiPlot.png"), 
     res = 300, width = 10, height = 8, units = "in")
 
-ggplot(assoc, aes(x = BP, y = -1 * log10(P), color = Highlight)) + 
+ggplot(assoc, aes(x = BP, y = -1 * log10(P), color = as.factor(Highlight))) + 
     geom_point() + 
     theme_bw() + 
     facet_grid(CHR ~ Test) + 
