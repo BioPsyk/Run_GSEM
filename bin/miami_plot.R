@@ -29,7 +29,7 @@ png(paste0(out_prefix, "_MiamiPlot.png"),
 ggplot(assoc, aes(x = BP, y = -1 * log10(P), color = as.factor(Highlight))) + 
     geom_point() + 
     theme_bw() + 
-    facet_grid(Test ~ CHR) + 
+    facet_grid(Test ~ CHR, space = "free") + 
     theme(axis.text.x = element_blank(), legend.position = "none") +
     xlab("") +
     ylab("-log10(P)") + 
