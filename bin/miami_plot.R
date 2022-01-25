@@ -23,16 +23,16 @@ assoc_Q    = assoc %>%
 # --------------------------- MIAMI PLOT ---------------------------#
 
 png(paste0(out_prefix, "_MiamiPlot.png"), 
-    res = 300, width = 10, height = 8, units = "in")
+    res = 300, width = 12, height = 8, units = "in")
 
 par(mfrow = c(2, 1))
 par(mar = c(0, 5, 3, 3))
 manhattan(assoc_P,
-          ylim = c(0, max(assoc_P$P)), 
+          ylim = c(0, max(-1 * log10(assoc_P$P))), 
           annotatePval = 5e-8)
 par(mar = c(5, 5, 3, 3))
 manhattan(assoc_Q, 
-          ylim = c(max(assoc_Q$P), 0),  
+          ylim = c(-1 * log10(max(assoc_Q$P)), 0),  
           xlab = "", 
           annotatePval = 5e-8)
 dev.off()
