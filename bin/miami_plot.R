@@ -32,7 +32,7 @@ manhattan(assoc_P,
           annotatePval = 5e-8)
 par(mar = c(5, 5, 3, 3))
 manhattan(assoc_Q, 
-          ylim = c(-1 * log10(max(assoc_Q$P)), 0),  
+          ylim = c(0, -1 * log10(max(assoc_Q$P))),  
           xlab = "", 
           annotatePval = 5e-8)
 dev.off()
