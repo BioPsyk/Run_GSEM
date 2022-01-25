@@ -28,7 +28,7 @@ png(paste0(out_prefix, "_MiamiPlot.png"),
 par(mfrow = c(2, 1))
 par(mar = c(0, 5, 3, 3))
 manhattan(assoc_P,
-          ylim(0, max(assoc_P$P)), 
+          ylim = c(0, max(assoc_P$P)), 
           cex = 2.2, 
           cex.lab = 2.5, 
           font.lab = 2, 
