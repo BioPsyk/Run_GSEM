@@ -29,26 +29,11 @@ par(mfrow = c(2, 1))
 par(mar = c(0, 5, 3, 3))
 manhattan(assoc_P,
           ylim = c(0, max(assoc_P$P)), 
-          cex = 2.2, 
-          cex.lab = 2.5, 
-          font.lab = 2, 
-          font.axis = 2, 
-          cex.axis = 1.6, 
-          las = 2, 
-          font = 4, 
           annotatePval = 5e-8)
 par(mar = c(5, 5, 3, 3))
 manhattan(assoc_Q, 
           ylim = c(max(assoc_Q$P), 0),  
-          cex = 2.2, 
-          cex.lab = 2.5, 
-          font.lab = 2, 
-          font.axis = 2, 
-          cex.axis = 1.6,
-          las = 2, 
-          font = 4, 
           xlab = "", 
-          xaxt = "n", 
           annotatePval = 5e-8)
 dev.off()
 
